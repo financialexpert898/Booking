@@ -1,0 +1,140 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+<!-- start page title section -->
+<section class="page-title-section bg-img cover-background" data-overlay-dark="4" data-background="img/banner/bg-01.jpg">
+    <div class="container">
+        <h1>My Booking</h1>
+        <ul>
+            <li>
+                <a href="index-2.html">Home</a>
+            </li>
+            <li>
+                <a href="#!">My Booking</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- end page title section -->
+<!-- start booking-form section -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 sm-margin-50px-bottom">
+                <h4 class="text-uppercase letter-spacing-1 margin-30px-bottom font-size24">Booking Form</h4>
+                
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Your Name:</label>
+                                <input id="name" name="name" placeholder="Name" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Your Email:</label>
+                                <input id="email" name="email" placeholder="Email" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input id="phone" name="phone" placeholder="Phone Number" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="country">Your Country:</label>
+                                <input id="country" name="country" placeholder="country" type="text">
+                            </div>
+                        </div>
+                     @*   <div id="datepairExample" class="col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-sm-6">
+                                    <label>Arrival Date</label>
+                                    <input type="text" name="date" placeholder="MM/DD/YYYY" data-provide="datepicker" data-constraints="@Date @NotEmpty">
+                                </div>*@
+                               @* <div class="form-group col-lg-6 col-sm-6">
+                                    <label>Departure Date</label>
+                                    <input type="text" name="date1" placeholder="MM/DD/YYYY" data-provide="datepicker" data-constraints="@Date @NotEmpty">
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>No of Rooms:</label>
+                                <div>
+                                    <input type="number" min="1" max="50" step="1" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>No of Guest:</label>
+                                <div>
+                                    <input type="number" min="1" max="50" step="1" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Message:</label>
+                                <textarea name="message" rows="5" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="butn">Booking Now</button>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="col-lg-4 popular-things">
+                <div class="padding-30px-left sm-no-padding-left">
+                    <h4 class="text-uppercase letter-spacing-1 margin-30px-bottom font-size24">Special Offers</h4>
+                    <div class="theme-shadow border-radius-3 margin-30px-bottom">
+                        <img src="~/img/content/01.jpg" alt="" />
+                        <div class="border-bottom padding-25px-all d-flex justify-content-between">
+                            <h5 class="font-size17 no-margin-bottom"><a href="single-room.html" class="text-extra-dark-gray">Single room</a></h5>
+                            <ul class="rate no-margin-bottom">
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row align-items-center text-center padding-15px-tb">
+                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
+                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$180.00</span><span>Per night</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-shadow border-radius-3">
+                        <img src="~/img/content/02.jpg" alt="" />
+                        <div class="border-bottom padding-25px-all d-flex justify-content-between">
+                            <h5 class="font-size17 no-margin-bottom"><a href="single-room.html" class="text-extra-dark-gray">Double room</a></h5>
+                            <ul class="rate no-margin-bottom">
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row align-items-center text-center padding-15px-tb">
+                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
+                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$280.00</span><span>Per night</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end booking-form section -->

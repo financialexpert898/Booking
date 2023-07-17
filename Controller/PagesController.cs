@@ -2,17 +2,17 @@
 
 namespace Booking
 {
-    public class BlogController : Controller
+    public class PagesController : Controller
     {
-        public IActionResult Index()
+        public IActionResult my_booking()
         {
             return View();
         }
-        public IActionResult blog_grid()
+        public IActionResult testimonial()
         {
             return View();
         }
-        public IActionResult blog_masonry()
+        public IActionResult restaurant()
         {
             return View();
         }

@@ -2,8 +2,7 @@
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-
+builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,20 +15,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.MapRazorPages();
 app.UseRouting(); //endpointRoutingMiddleaware
 app.UseAuthentication(); // xac dinh đanh tinh 
 app.UseAuthorization(); //xac thuc quyen truy cap
 
-app.UseEndpoints(endpoints =>
-{
-    // URL: {controller}/{action}/{id{
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-    endpoints.MapControllerRoute(
-       name: "default",
-       pattern: "{controller=About}/{action=Index}/{id?}");
-   
-   
-});
 
 app.Run();
