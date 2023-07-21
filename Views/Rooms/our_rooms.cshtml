@@ -1,93 +1,36 @@
+﻿@using Booking.Models
+@model List<Room>
+
 @{
     Layout = "_Layout";
 }
         <!-- start page title section -->
-        <section class="page-title-section bg-img cover-background" data-overlay-dark="4" data-background="img/banner/bg-01.jpg">
-            <div class="container">
-                <h1>Our Rooms</h1>
-                <ul>
-                    <li>
-                        <a href="index-2.cshtml">Home</a>
-                    </li>
-                    <li>
-                        <a href="#!">Our Rooms</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!-- end page title section -->
 
-        <!-- start our rooms section -->
-        <section>
-            <div class="container">
-                <div class="text-center margin-50px-bottom xs-margin-30px-bottom">
-                    <h3 class="margin-10px-bottom">Our Rooms</h3>
-                    <p class="no-margin-bottom">Lorem Ipsum is simply dummy printing</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 margin-30px-bottom">
-                        <div class="border">
-                            <img src="~/img/content/room-5.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Single Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $250/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
+<section>
+    <div class="container">
+        <div class="text-center margin-50px-bottom xs-margin-30px-bottom">
+            <h3 class="margin-10px-bottom">Our Rooms</h3>
+            <p class="no-margin-bottom">Lorem Ipsum is simply dummy printing</p>
+        </div>
+        <div class="row">
+            @foreach (var room in Model)
+            {
+                <div class="col-md-6 col-lg-4 margin-30px-bottom">
+                    <div class="border">
+                        <img src="~/img/content/@room.Img" alt="" /> <!-- Hiển thị ảnh của phòng -->
+                        <div class="padding-25px-all">
+                            <h5 class="margin-5px-bottom font-size28 xs-font-size24">@room.Description</h5> <!-- Hiển thị mô tả của phòng -->
+                            <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">
+                                Start from $@room.Price/night
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 margin-30px-bottom">
-                        <div class="border">
-                            <img src="~/img/content/room-6.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Family Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $550/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 margin-30px-bottom">
-                        <div class="border">
-                            <img src="~/img/content/room-7.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Classic Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $340/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 sm-margin-30px-bottom">
-                        <div class="border">
-                            <img src="~/img/content/room-8.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Luxury Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $700/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 xs-margin-30px-bottom">
-                        <div class="border">
-                            <img src="~/img/content/room-9.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Couple Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $400/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="border">
-                            <img src="~/img/content/room-10.jpg" alt="" />
-                            <div class="padding-25px-all">
-                                <a href="single-room.cshtml"><h5 class="margin-5px-bottom font-size28 xs-font-size24">Superior Room</h5></a>
-                                <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">Start from $350/night</div>
-                                <a href="single-room.cshtml" class="font-weight-600 text-theme-color">Room Details<i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i></a>
-                            </div>
+                            <a href="single-room.cshtml" class="font-weight-600 text-theme-color">
+                                Room Details
+                                <i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- end our rooms section -->
-
- 
+            }
+        </div>
+    </div>
+</section>

@@ -15,7 +15,8 @@ namespace Booking.Models
         public string? Address { get; set; }
         public string? Description { get; set; }
         public string? OtherDetails { get; set; }
-
+        public string? Img { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
+
     }
 }

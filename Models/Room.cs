@@ -17,8 +17,7 @@ namespace Booking.Models
         public decimal? Price { get; set; }
         public string? Description { get; set; }
         public string? OtherDetails { get; set; }
-        public int? Sophong { get; set; }
-
+        public string? Img { get; set; }
         public virtual Hotel? Hotel { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
 

@@ -172,7 +172,7 @@ namespace Booking.Models
                     .IsUnicode(false)
                     .HasColumnName("room_number");
 
-                entity.Property(e => e.Sophong).HasColumnName("sophong");
+                
 
                 entity.HasOne(d => d.Hotel)
                     .WithMany(p => p.Rooms)
