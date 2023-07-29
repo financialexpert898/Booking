@@ -1,4 +1,5 @@
-﻿using Booking.Models;
+﻿using Booking.Data;
+using Booking.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace Booking

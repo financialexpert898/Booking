@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Booking.Migrations
 {
-    public partial class innit : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +30,8 @@ namespace Booking.Migrations
                     name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
                     address = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
                     description = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
+                    other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +44,8 @@ namespace Booking.Migrations
                 {
                     room_type_id = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
-                    description = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
+                    description = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,31 +53,17 @@ namespace Booking.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    user_id = table.Column<int>(type: "int", nullable: false),
-                    username = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
-                    password = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
-                    other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.user_id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
                     room_id = table.Column<int>(type: "int", nullable: false),
+                    RoomTypeId = table.Column<int>(type: "int", nullable: false),
                     hotel_id = table.Column<int>(type: "int", nullable: true),
-                    room_number = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    status = table.Column<int>(type: "int", nullable: true),
                     price = table.Column<decimal>(type: "decimal(10,2)", nullable: true),
                     description = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
                     other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    sophong = table.Column<int>(type: "int", nullable: true)
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -85,32 +73,34 @@ namespace Booking.Migrations
                         column: x => x.hotel_id,
                         principalTable: "Hotels",
                         principalColumn: "hotel_id");
+                    table.ForeignKey(
+                        name: "FK_Room_RoomType",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomTypes",
+                        principalColumn: "room_type_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
-                    booking_id = table.Column<int>(type: "int", nullable: false),
-                    user_id = table.Column<int>(type: "int", nullable: true),
-                    room_id = table.Column<int>(type: "int", nullable: true),
-                    check_in_date = table.Column<DateTime>(type: "date", nullable: true),
+                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    room_id = table.Column<int>(type: "int", nullable: false),
+                    check_in_date = table.Column<DateTime>(type: "date", nullable: false),
                     check_out_date = table.Column<DateTime>(type: "date", nullable: true),
                     other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bookings", x => x.booking_id);
+                    table.PrimaryKey("PK_My_Booking", x => new { x.user_id, x.room_id, x.check_in_date });
+                    table.UniqueConstraint("AK_Bookings_user_id_check_in_date_room_id", x => new { x.user_id, x.check_in_date, x.room_id });
                     table.ForeignKey(
-                        name: "FK__Bookings__room_i__0EA330E9",
+                        name: "FK_Bookings_Rooms_room_id",
                         column: x => x.room_id,
                         principalTable: "Rooms",
-                        principalColumn: "room_id");
-                    table.ForeignKey(
-                        name: "FK__Bookings__user_i__0DAF0CB0",
-                        column: x => x.user_id,
-                        principalTable: "Users",
-                        principalColumn: "user_id");
+                        principalColumn: "room_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,37 +129,28 @@ namespace Booking.Migrations
                 name: "Payments",
                 columns: table => new
                 {
-                    payment_id = table.Column<int>(type: "int", nullable: false),
-                    booking_id = table.Column<int>(type: "int", nullable: true),
+                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    payment_date = table.Column<DateTime>(type: "date", nullable: false),
                     amount = table.Column<decimal>(type: "decimal(10,2)", nullable: true),
-                    payment_date = table.Column<DateTime>(type: "date", nullable: true),
                     payment_method = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
                     other_details = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Payments", x => x.payment_id);
+                    table.PrimaryKey("PK_Payments", x => new { x.user_id, x.payment_date, x.RoomId });
                     table.ForeignKey(
-                        name: "FK__Payments__bookin__1367E606",
-                        column: x => x.booking_id,
+                        name: "FK__Payments__booking__1367E606",
+                        columns: x => new { x.user_id, x.payment_date, x.RoomId },
                         principalTable: "Bookings",
-                        principalColumn: "booking_id");
+                        principalColumns: new[] { "user_id", "check_in_date", "room_id" },
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_room_id",
                 table: "Bookings",
                 column: "room_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_user_id",
-                table: "Bookings",
-                column: "user_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Payments_booking_id",
-                table: "Payments",
-                column: "booking_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoomAmenities_amenity_id",
@@ -180,6 +161,11 @@ namespace Booking.Migrations
                 name: "IX_Rooms_hotel_id",
                 table: "Rooms",
                 column: "hotel_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_RoomTypeId",
+                table: "Rooms",
+                column: "RoomTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -191,9 +177,6 @@ namespace Booking.Migrations
                 name: "RoomAmenities");
 
             migrationBuilder.DropTable(
-                name: "RoomTypes");
-
-            migrationBuilder.DropTable(
                 name: "Bookings");
 
             migrationBuilder.DropTable(
@@ -203,10 +186,10 @@ namespace Booking.Migrations
                 name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Hotels");
 
             migrationBuilder.DropTable(
-                name: "Hotels");
+                name: "RoomTypes");
         }
     }
 }
