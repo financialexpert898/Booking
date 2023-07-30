@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    
+    IgnoreSection("Scripts");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -142,8 +146,9 @@
                                     </ul>
                                 </div>
                                 <!-- end atribute navigation -->
-
+                                <partial name="_LoginPartial" />
                             </nav>
+                 
                         </div>
                     </div>
                 </div>
@@ -230,7 +235,7 @@
     <script src="js/main.js"></script>
 
     <!-- all js include end -->
-
+    @RenderSection("Scripts", required: false)
 
 </body>
 

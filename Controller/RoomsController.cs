@@ -2,6 +2,7 @@
 using Booking.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace Booking
 {
     public class RoomsController : Controller
@@ -9,8 +10,13 @@ namespace Booking
         public IActionResult our_rooms()
         {
             var dbcontext = new bookingContext();
-            List<Room> rooms = dbcontext.Rooms.ToList();
-            return View(rooms);
+            if (dbcontext.Rooms.ToList() != null)
+            {
+                List<Room> rooms = dbcontext.Rooms.ToList();
+                return View(rooms);
+            }
+            return View();
+            
         }
         public IActionResult single_room()
         {
