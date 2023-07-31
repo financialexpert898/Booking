@@ -13,7 +13,7 @@ namespace Booking.Models
 
         public int RoomId { get; set; }
 
-        public int RoomTypeId { get; set; }
+        public int? RoomTypeId { get; set; }
         public int? HotelId { get; set; }
         public int? status { get; set; }
         public decimal? Price { get; set; }
@@ -24,6 +24,6 @@ namespace Booking.Models
         public virtual ICollection<My_Booking> Bookings { get; set; }
 
         public virtual ICollection<Amenity> Amenities { get; set; }
-        public virtual RoomType RoomType { get; set; }
+        public virtual RoomType? RoomType { get; set; }
     }
 }
