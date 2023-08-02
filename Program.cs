@@ -1,18 +1,19 @@
 using Booking.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<bookingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("value")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<bookingContext>();
 var app = builder.Build();
-
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

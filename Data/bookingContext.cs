@@ -18,6 +18,7 @@ namespace Booking.Data
             : base(options)
         {
         }
+        public virtual DbSet<BookingUser> BookingUsers { get; set; } = null!;
 
         public virtual DbSet<Amenity> Amenities { get; set; } = null!;
         public virtual DbSet<My_Booking> Bookings { get; set; } = null!;
@@ -26,6 +27,7 @@ namespace Booking.Data
         public virtual DbSet<Room> Rooms { get; set; } = null!;
         public virtual DbSet<RoomType> RoomTypes { get; set; } = null!;
 
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
