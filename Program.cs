@@ -31,7 +31,7 @@ app.UseAuthorization(); //xac thuc quyen truy cap
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Admin}/{action=Adminstrator}/{id?}");
 
 
 app.Run();

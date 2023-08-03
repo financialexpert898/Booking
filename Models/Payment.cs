@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Booking.Models
 {
+   
     public partial class Payment
     {
         public string UserId { get; set; }

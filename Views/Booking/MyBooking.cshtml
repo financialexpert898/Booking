@@ -1,0 +1,153 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Booking.Data;
+@using Booking.Models;
+@model My_Booking
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-title-section bg-img cover-background" data-overlay-dark="4" data-background="/img/banner/bg-01.jpg">
+    <div class="container">
+        <h1>Booking</h1>
+        <ul>
+            <li>
+                <a href="/Home">Home</a>
+            </li>A
+            <li>
+                <a href="#!">Booking</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- end page title section -->
+<!-- start booking-form section -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 sm-margin-50px-bottom">
+                <h4 class="text-uppercase letter-spacing-1 margin-30px-bottom font-size24">Booking Form</h4>
+                <form method="post" action="/Booking/MyBooking">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label asp-for="RoomId">Id Name:</label>
+                                    <input asp-for="RoomId" id="naidme" name="roomId" placeholder="Name" type="text">
+                            </div>
+                        </div>
+@*                     @ <div class="col-md-6">
+                            <div class="form-group">
+                                <label  asp-for="Username">Your Email:</label>
+                                <input asp-for="UserId" id="email" name="userId" placeholder="Email" type="text">
+                            </div>
+                        </div>*@
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="OtherDetails">Phone Number:</label>
+                                <input asp-for="OtherDetails" id="phone" name="otherDetails" placeholder="Phone Number" type="text">
+                            </div>
+                        </div>
+                       @* <div class="form-group col-lg-6 col-sm-6">
+                            <label asp-for="Room">Type Room</label>
+                            <select asp-for="Room" class="forrm-control" name="RoomType">
+                                <option value="Single Room">Single Room</option>
+                                <option value="Couple Room">Couple Room</option>
+                                <option value="Classic Room">Classic Room</option>
+                                <option value="Superior Room">Superior Room</option>
+                                <option value="Family Room">Family Room</option>
+                                <option value="Luxury Room">Luxury Room</option>
+                            </select>
+                        </div>*@
+                        <div id="datepairExample" class="col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-sm-6">
+                                    <label asp-for="Date">Arrival Date</label>
+                                    <input asp-for="Date" type="date" name="date" placeholder="MM/DD/YYYY">
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-6">
+                                    <label asp-for="CheckOutDate">Departure Date</label>
+                                    <input asp-for="CheckOutDate" type="date" name="checkOutDate" placeholder="MM/DD/YYYY">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                      @*  <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Message:</label>
+                                <textarea asp-for="OtherDetails" name="otherDetails" rows="5" placeholder="Number Phone"></textarea>
+                            </div>
+                        </div>*@
+                        <div class="col-md-12">
+                            <button type="submit" class="butn">Booking Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 popular-things">
+                <div class="padding-30px-left sm-no-padding-left">
+                    <h4 class="text-uppercase letter-spacing-1 margin-30px-bottom font-size24">Special Offers</h4>
+                    <div class="theme-shadow border-radius-3 margin-30px-bottom">
+                        <img src="~/img/content/01.jpg" alt="" />
+                        <div class="border-bottom padding-25px-all d-flex justify-content-between">
+                            <h5 class="font-size17 no-margin-bottom"><a href="/Room/Single" class="text-extra-dark-gray">Single room</a></h5>
+                            <ul class="rate no-margin-bottom">
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row align-items-center text-center padding-15px-tb">
+                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
+                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$180.00</span><span>Per night</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-shadow border-radius-3">
+                        <img src="~/img/content/02.jpg" alt="" />
+                        <div class="border-bottom padding-25px-all d-flex justify-content-between">
+                            <h5 class="font-size17 no-margin-bottom"><a href="/Room/Couple" class="text-extra-dark-gray">Double room</a></h5>
+                            <ul class="rate no-margin-bottom">
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row align-items-center text-center padding-15px-tb">
+                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
+                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$280.00</span><span>Per night</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end booking-form section -->
+<!-- start footer section -->
+<script>
+    // Hàm được gọi khi trang web được tải
+    window.onload = function() {
+      generateRandomNumber();
+    };
+
+    function generateRandomNumber() {
+      // Sinh số ngẫu nhiên từ 1 đến 100 (hoặc bất kỳ khoảng giá trị bạn muốn)
+      var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+      // Hiển thị số ngẫu nhiên trong phần tử có id "randomNumber"
+      document.getElementById("randomNumber").textContent = "Random number: " + randomNumber;
+    }
+</script>
