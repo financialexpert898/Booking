@@ -1,61 +1,54 @@
-﻿@model IEnumerable<Booking.Models.My_Booking>
+﻿
 @using Microsoft.AspNetCore.Identity
 @using Booking.Data;
 @using Booking.Models;
+@model IEnumerable<Booking.Models.My_Booking>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-
-
-
-   
+    <!-- Add your own CSS file here if needed -->
 </head>
 <body>
     <h2 style="text-align:center">List User Booking</h2>
-
-
     <div class="content" style="margin-left:200px">
         <div class="container">
             <div class="table-responsive">
-
                 <table class="table table-striped custom-table">
                     <thead>
                         <tr>
-                            <th scope="col"> STT </th>
-                    @*        <th scope="col"> Name </th>*@
-                            <th scope="col"> NumberPhone</th>
-                            <th scope="col"> Check In Date</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Room Type</th>
+                            <th scope="col">NumberPhone</th>
+                            <th scope="col">Check In Date</th>
                             <th scope="col">Check Out Date</th>
-                            @*<th scope="col">Note</th>*@
-                            @* <th scope="col">Contact</th>
-                            <th scope="col">Education</th>
-                            <th scope="col"></th>*@
                             <th>Feature</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
+
                             <tr scope="row">
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.RoomId)
+                                    @Html.DisplayFor(modelItem => item.User.UserName)
                                 </td>
-                            @*    <td><a href="#">@Html.DisplayFor(modelItem => item.UserName)</a></td>*@
-                                @*<td>
-                                    <small class="d-block">@Html.DisplayFor(modelItem => item.Customer.CustomerEmail)</small>
-                                </td>*@
-                                <td>@Html.DisplayFor(modelItem => item.OtherDetails)</td>
-                               @* <td>@Html.DisplayFor(modelItem => item.Room.RoomType)</td>*@
-                                <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                                <td>@Html.DisplayFor(modelItem => item.CheckOutDate)</td>
-                             @*   <td>@Html.DisplayFor(modelItem => item.Room.RoomDescription)</td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Room.RoomType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OtherDetails)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CheckOutDate)
+                                </td>
                                 <td>
                                     <form method="post" action="/Admin/Delete?ed=@item.RoomId" onsubmit="return confirm('Are you sure you want to delete?')">
                                         <button type="submit" class="btn btn-link">Delete</button>
@@ -68,8 +61,6 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
-
 

@@ -18,10 +18,15 @@ namespace Booking
 
         public IActionResult Adminstrator()
         {
-            var book = _context.Bookings.Include(x=>x.Room).Include(x=>x.User).ToList();
-            return View(book);
+            // Lấy dữ liệu từ bảng My_Booking và bao gồm thông tin Room và RoomType
+            var bookings = _context.Bookings
+                .Include(b => b.Room)
+                    .ThenInclude(r => r.RoomType)
+                .ToList();
+
+            return View(bookings);
         }
-        [HttpPost]
+            [HttpPost]
         public IActionResult Delete(int ed)
         {
             var booking = _context.Bookings.FirstOrDefault(b => b.RoomId == ed);
