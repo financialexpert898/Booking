@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Booking
 {
     public class RoomsController : Controller
@@ -27,8 +29,8 @@ namespace Booking
            
             return View();
         }
-        
 
+        [Authorize (Roles = "Sales")]
         [HttpGet]
         public ActionResult Insert()
         {
