@@ -2,7 +2,6 @@ using Booking.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Net;
-using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -13,11 +12,6 @@ builder.Services.AddDbContext<bookingContext>(options => options.UseSqlServer(bu
 builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<bookingContext>();
-builder.Services.AddAzureClients(clientBuilder =>
-{
-    clientBuilder.AddBlobServiceClient(builder.Configuration["ConnectionStrings:value:blob"], preferMsi: true);
-    clientBuilder.AddQueueServiceClient(builder.Configuration["ConnectionStrings:value:queue"], preferMsi: true);
-});
 var app = builder.Build();
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 // Configure the HTTP request pipeline.
@@ -37,7 +31,7 @@ app.UseAuthorization(); //xac thuc quyen truy cap
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Admin}/{action=Adminstrator}/{id?}");
 
 
 app.Run();

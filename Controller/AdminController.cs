@@ -1,4 +1,5 @@
 ﻿using Booking.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace Booking
             _context = context;
             _userManager = userManager;
         }
-
+        [Authorize(Roles ="Admin")]
         public IActionResult Adminstrator()
         {
             // Lấy dữ liệu từ bảng My_Booking và bao gồm thông tin Room và RoomType
