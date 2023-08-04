@@ -21,10 +21,14 @@
                             <div class="font-size12 text-uppercase text-extra-dark-gray font-weight-700 margin-20px-bottom letter-spacing-2">
                                 Start from $@room.Price/night
                             </div>
-                            <a href="single-room.cshtml" class="font-weight-600 text-theme-color">
-                                Room Details
-                                <i class="fas fa-arrow-right margin-10px-left vertical-align middle font-size12"></i>
-                            </a>
+                        </div>
+                            <div>
+                        <div class="row align-items-center text-center padding-15px-tb">
+                            
+                           <div class="col-6 border-right"><a asp-controller="Booking" asp-action="MyBooking" class="butn small" data-roomid="@room.RoomId">book now</a></div>
+
+                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray"></span>@room.Price<span>Per night</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>

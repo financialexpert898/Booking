@@ -6,6 +6,7 @@ namespace Booking
 	{
 		public IActionResult Index()
 		{
+
 			return View();
 		}
 	}

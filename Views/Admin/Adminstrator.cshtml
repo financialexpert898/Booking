@@ -21,7 +21,8 @@
                 <table class="table table-striped custom-table">
                     <thead>
                         <tr>
-                            <th scope="col">User Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">First Name</th>
                             <th scope="col">Room Type</th>
                             <th scope="col">NumberPhone</th>
                             <th scope="col">Check In Date</th>
@@ -35,7 +36,10 @@
 
                             <tr scope="row">
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.User.UserName)
+                                    @Html.DisplayFor(modelItem => item.User.Lastname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.Firstname)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Room.RoomType.Name)

@@ -3,10 +3,6 @@
 @using Booking.Models;
 @model My_Booking
 
-@{
-
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <section class="page-title-section bg-img cover-background" data-overlay-dark="4" data-background="/img/banner/bg-01.jpg">
     <div class="container">
@@ -33,8 +29,15 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label asp-for="RoomId">Id Name:</label>
-                                    <input asp-for="RoomId" id="naidme" name="roomId" placeholder="Name" type="text">
+                                <label asp-for="RoomId">Id Room:</label>
+                                    <select asp-for="RoomId" id="naidme" name="roomId" placeholder="Name" type="text">
+                                        <option value="">
+                                        @foreach(var room in ViewBag.Rooms)
+                                        {
+                                            <option value="@room.RoomId">@room.RoomId</option>
+                                        }
+                                    </option>
+                                    </select>
                             </div>
                         </div>
 @*                     @ <div class="col-md-6">
@@ -95,7 +98,7 @@
                     <div class="theme-shadow border-radius-3 margin-30px-bottom">
                         <img src="~/img/content/01.jpg" alt="" />
                         <div class="border-bottom padding-25px-all d-flex justify-content-between">
-                            <h5 class="font-size17 no-margin-bottom"><a href="/Room/Single" class="text-extra-dark-gray">Single room</a></h5>
+                            <h5 class="font-size17 no-margin-bottom">Single room</a></h5>
                             <ul class="rate no-margin-bottom">
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
@@ -104,17 +107,12 @@
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
-                        <div>
-                            <div class="row align-items-center text-center padding-15px-tb">
-                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
-                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$180.00</span><span>Per night</span></div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="theme-shadow border-radius-3">
                         <img src="~/img/content/02.jpg" alt="" />
                         <div class="border-bottom padding-25px-all d-flex justify-content-between">
-                            <h5 class="font-size17 no-margin-bottom"><a href="/Room/Couple" class="text-extra-dark-gray">Double room</a></h5>
+                            <h5 class="font-size17 no-margin-bottom">Double room</a></h5>
                             <ul class="rate no-margin-bottom">
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
@@ -123,12 +121,7 @@
                                 <li><a href="#"><i class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
-                        <div>
-                            <div class="row align-items-center text-center padding-15px-tb">
-                                <div class="col-6 border-right"><a href="single-room.html" class="butn small">book now</a></div>
-                                <div class="col-6"><span class="display-block font-size20 letter-spacing-2 text-extra-dark-gray">$280.00</span><span>Per night</span></div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ namespace Booking.Models
         public DateTime? CheckOutDate { get; set; }
         public string? OtherDetails { get; set; }
 
-        public virtual IdentityUser User { get; set; } // Thêm thuộc tính User kiểu IdentityUser
+        public virtual BookingUser User { get; set; } // Thêm thuộc tính User kiểu IdentityUser
         public virtual Room? Room { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
     }

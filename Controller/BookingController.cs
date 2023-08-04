@@ -59,8 +59,10 @@ namespace Booking.Controllers
 
                 Text = a.CheckOutDate.ToString(),
             }).ToList();
-
-
+            var rooms = _context.Rooms.ToList();
+            var roomtypes = _context.RoomTypes.ToList();
+            ViewBag.Rooms = rooms;
+            ViewBag.RoomTypes = roomtypes;
             ViewData["bookingList"] = bookingList.ToList();
 
             return View();
